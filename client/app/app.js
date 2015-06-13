@@ -23,8 +23,11 @@ angular.module('shortly', [
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController'
-    }).
-    otherwise({
+    })
+    // .when('/:code', {
+    //   Links.redirectLink()
+    // })
+    .otherwise({
       templateUrl: 'app/links/links.html',
       controller: 'LinksController'
     });

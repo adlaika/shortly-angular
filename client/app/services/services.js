@@ -23,9 +23,19 @@ angular.module('shortly.services', [])
     });
   };
 
+  var redirectLink = function(code) {
+    return $http({
+      method: 'GET',
+      url: '/api/code/' + code
+    }).then(function (resp) {
+      $window.location.href = resp;
+    });
+  };
+
   return {
     getLinks: getLinks,
-    postLink: postLink
+    postLink: postLink,
+    redirectLink: redirectLink
   };
 })
 
