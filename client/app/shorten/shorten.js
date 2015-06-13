@@ -6,6 +6,10 @@ angular.module('shortly.shorten', [])
   $scope.addLink = function() {
     Links.postLink($scope.link).then(function() {
       $scope.link.url = '';
+    })
+    .catch(function (error) {
+      $scope.errorMessage = "Invalid URL";
+      console.error(error);
     });
   };
 });

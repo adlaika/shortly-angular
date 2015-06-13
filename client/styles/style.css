@@ -120,6 +120,14 @@ input[type=url]:focus {
   margin: 0 10px;
 }
 
+.errorMessage {
+  color: red;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
 .clean {
   border: #efe solid 2px;
   padding: 10px;

@@ -9,27 +9,37 @@ angular.module('shortly', [
   $routeProvider
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
+      authenticate: false
     })
     .when('/signup', {
       templateUrl: 'app/auth/signup.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
+      authenticate: false
     })
     // Your code here
     .when('/links', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      authenticate: true
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
+      controller: 'ShortenController',
+      authenticate: true
+    })
+    .when('/signin/:signout', {
+      templateUrl: 'app/auth/signin.html',
+      controller: 'AuthController',
+      authenticate: true
     })
     // .when('/:code', {
     //   Links.redirectLink()
     // })
     .otherwise({
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      authenticate: true
     });
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
@@ -61,7 +71,12 @@ angular.module('shortly', [
   // and send that token to the server to see if it is a real user or hasn't expired
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
+    console.log('heard route change');
+    console.log("Next route: " + JSON.stringify(next.$$route));
+    console.log("Route auth: " + next.$$route.authenticate);
+    console.log("!Auth.isAuth: " + !Auth.isAuth());
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+      console.log("unauthorize to view next route, changing to /signin");
       $location.path('/signin');
     }
   });
