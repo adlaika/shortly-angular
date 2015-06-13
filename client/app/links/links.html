@@ -2,7 +2,13 @@
 
   <div>
     <h1>Links</h1>
-    <div class="link" ng-repeat="link in data.links"><a href="{{link.url}}"><h2>{{link.title}}</h2><p>URL: {{link.url}} <p>Shortened URL: {{link.base_url + "/" + link.code}} <p>Visits: {{link.visits}}</a>
+    <div class="link" ng-repeat="link in data.links">
+    <img src="./assets/redirect_icon.png">
+      <div class="info">
+        <div class="visits"><span>{{link.visits}}</span>Visits</div>
+        <div class="title">{{link.title}}</div>
+        <div class="original">{{link.url}}</div>
+        <a href="{{link.base_url + '/' + link.code}}">{{link.base_url + "/" + link.code}}</a>
+      </div>
     </div>
-  </div>
 </div>
