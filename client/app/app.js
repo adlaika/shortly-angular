@@ -33,9 +33,10 @@ angular.module('shortly', [
       controller: 'AuthController',
       authenticate: true
     })
-    // .when('/:code', {
-    //   Links.redirectLink()
-    // })
+    .when('/:code', {
+      templateUrl: 'app/links/links.html',
+      controller: 'LinksController'
+    })
     .otherwise({
       templateUrl: 'app/links/links.html',
       controller: 'LinksController',
@@ -71,10 +72,6 @@ angular.module('shortly', [
   // and send that token to the server to see if it is a real user or hasn't expired
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    console.log('heard route change');
-    console.log("Next route: " + JSON.stringify(next.$$route));
-    console.log("Route auth: " + next.$$route.authenticate);
-    console.log("!Auth.isAuth: " + !Auth.isAuth());
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       console.log("unauthorize to view next route, changing to /signin");
       $location.path('/signin');

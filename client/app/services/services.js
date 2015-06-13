@@ -26,9 +26,10 @@ angular.module('shortly.services', [])
   var redirectLink = function(code) {
     return $http({
       method: 'GET',
-      url: '/api/code/' + code
+      url: '/api/links/' + code
+
     }).then(function (resp) {
-      $window.location.href = resp;
+      $window.location.href= resp.location;
     });
   };
 
