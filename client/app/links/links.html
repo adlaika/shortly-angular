@@ -2,5 +2,7 @@
 
   <div>
     <h1>Links</h1>
+    <div class="link" ng-repeat="link in data.links"><a href="{{link.url}}"><h2>{{link.title}}</h2><p>URL: {{link.url}} <p>Shortened URL: {{link.base_url + "/" + link.code}} <p>Visits: {{link.visits}}</a>
+    </div>
   </div>
 </div>
