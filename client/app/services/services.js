@@ -27,9 +27,10 @@ angular.module('shortly.services', [])
     return $http({
       method: 'GET',
       url: '/api/links/' + code
-
     }).then(function (resp) {
-      $window.location.href= resp.location;
+      console.log(resp);
+    }).catch(function(err){
+      console.log(err);
     });
   };
 

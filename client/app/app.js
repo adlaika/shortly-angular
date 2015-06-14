@@ -33,10 +33,6 @@ angular.module('shortly', [
       controller: 'AuthController',
       authenticate: true
     })
-    .when('/:code', {
-      templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
-    })
     .otherwise({
       templateUrl: 'app/links/links.html',
       controller: 'LinksController',
